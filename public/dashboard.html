@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debt Safe Analytics</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <div>
+      <h1>KRUSHI MITRA</h1>
+      <p>Farm Overview & Financial Health</p>
+      <!-- --<span id="seasonName"></span> -->
+    </div>
+    <div class="user">
+      👤 Farmer
+    </div>
+  </header>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Dashboard Grid -->
+<main class="dashboard">
+
+  <!-- KEY INSIGHTS (FULL WIDTH) -->
+  <section class="card-dis">
+    <h3 style="color: whitesmoke;">KEY Insights</h3>
+    <div class="insights">
+      <div class="insight">
+        <div class="icon">🌽</div>
+        <div class="text">
+          <strong>Recommended Crops</strong>
+          <span id="crops"></span>
+        </div>
+      </div>
+
+      <div class="insight">
+        <div class="icon">💰</div>
+        <div class="text">
+          <strong>Budget Target</strong>
+          <span id="budget"></span>
+        </div>
+      </div>
+
+   <div class="insight">
+  <div class="icon">🌱</div>
+  <div class="text">
+    <strong>Seed Purchase</strong>
+    <span id="seed"></span>
+  </div>
+</div>
+
+      <div class="insight danger">
+        <div class="icon">⚠️</div>
+        <div class="text">
+          <strong>Risk Level</strong>
+          <span id="risk"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARM METRICS (LEFT) -->
+  <section class="card metrics-card">
+    <h2>Farm Metrics</h2>
+
+    <div class="metrics">
+      <div>🌾 Land Size<br><strong id="land"></strong></div>
+      <div>💼 Current Budget<br><strong id="currentBudget"></strong></div>
+      <div>🏦 Previous Loan<br><strong id="loan"></strong></div>
+    </div>
+
+    <canvas id="myChart"></canvas>
+  </section>
+
+  <!-- PROFIT & RISK (RIGHT) -->
+  <section class="card">
+    <h2>Profit & Risk Analysis</h2>
+    <canvas id="profitRiskChart"></canvas>
+  </section>
+
+</main>
+
+
+    <!-- Debt Repayment -->
+    <!-- <section class="card">
+      <h2>Debt Repayment Progress</h2>
+      <div class="progress">
+        <div class="bar">
+          <div class="fill" style="width:68%"></div>
+        </div>
+        <div class="score">68</div>
+      </div>
+      <p class="budget">Budget Target: <strong>₹55,000</strong></p>
+    </section> -->
+
+    
+    <!-- Eligible Schemes -->
+    <!-- <section class="card small">
+      <h2>Eligible Schemes</h2>
+      <ul>
+        <li>✅ PM Kisan Yojana</li>
+        <li>✅ Kisan Credit Card</li>
+      </ul>
+    </section> -->
+
+    <!-- Upcoming Tasks -->
+    <!-- <section class="card small">
+      <h2>Upcoming Tasks</h2>
+      <ul>
+        <li>✔ Soil Testing Next Week</li>
+        <li>✔ Buy Seeds in June</li>
+      </ul>
+    </section> -->
+
+  </main>
+
+<script>
+const raw = sessionStorage.getItem("ai_result");
+
+if (!raw) {
+  alert("No AI data found. Please submit the form again.");
+  window.location.href = "index.html";
+}
+
+const result = JSON.parse(raw);
+console.log(JSON.parse(sessionStorage.getItem("ai_result")));
+
+//  const season = result.season || "Unknown Season";
+
+//   // ✅ Update header dynamically
+//   document.getElementById("seasonName").innerText = season;
+  
+// ===== DASHBOARD TEXT =====
+document.getElementById("crops").innerText = (result.crops || []).join(", ");
+document.getElementById("budget").innerText = result.budget || "N/A";
+document.getElementById("seed").innerText = result.seed || "N/A";
+document.getElementById("risk").innerText = result.debt_risk || "N/A";
+
+// ===== FARM METRICS =====
+document.getElementById("land").innerText = localStorage.getItem("landSize");
+document.getElementById("currentBudget").innerText = "₹ " + localStorage.getItem("budget");
+document.getElementById("loan").innerText = "₹ " + localStorage.getItem("loan");
+
+// ===== SAFE RISK SCORES =====
+const riskScores = result.risk_scores || {
+  Low: result.debt_risk === "Low" ? 70 : 15,
+  Medium: result.debt_risk === "Medium" ? 70 : 15,
+  High: result.debt_risk === "High" ? 70 : 15
+};
+
+// ===== CHART =====
+const canvas = document.getElementById("profitRiskChart");
+const ctx = canvas.getContext("2d");
+
+window.profitRiskChart = new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: ["Profit", "Low Risk", "Medium Risk", "High Risk"],
+    datasets: [{
+      label: "Score (%)",
+      data: [
+        Number(result.profit_score) || 0,
+        riskScores.Low,
+        riskScores.Medium,
+        riskScores.High
+      ],
+      backgroundColor: [
+        "#4CAF50",
+        "#999999",
+        "#999999",
+        "#999999"
+      ],
+      borderRadius: 6,
+      barThickness: 50
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100
+      }
+    }
+  }
+});
+
+// ===== HIGHLIGHT ACTUAL RISK BAR =====
+const activeIndex =
+  result.debt_risk === "Low" ? 1 :
+  result.debt_risk === "Medium" ? 2 : 3;
+
+window.profitRiskChart.data.datasets[0].backgroundColor[activeIndex] = "#F44336";
+window.profitRiskChart.update();
+
+const ct = document.getElementById("myChart").getContext("2d");
+
+const gradient = ct.createLinearGradient(0, 0, 0, 300);
+gradient.addColorStop(0, "rgba(76, 175, 80, 0.6)");   // Green top
+gradient.addColorStop(1, "rgba(76, 175, 80, 0.05)");  // Transparent bottom
+
+new Chart(ct, {
+  type: "line",
+  data: {
+    labels: [1000, 1500, 2000, 1750, 2250],
+    datasets: [{
+      label: "Profit / Risk",
+      data: [20, 35, 28, 40, 60],
+
+      // ✅ Gradient fill
+      fill: true,
+      backgroundColor: gradient,
+
+      // ✅ Line style
+      borderColor: "#4CAF50",
+      borderWidth: 3,
+      tension: 0.4, // smooth curve
+
+      // ✅ Points
+      pointBackgroundColor: "#ffffff",
+      pointBorderColor: "#4CAF50",
+      pointRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

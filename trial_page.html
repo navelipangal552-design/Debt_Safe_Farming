@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debt Safe Planner - Farmer Input</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      /* background: linear-gradient(135deg, #667eea, #764ba2); */
+        background: 
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("https://images.unsplash.com/photo-1598514982845-fd3a65c6d3cf");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: left;
+      justify-content: center;
+    }
+
+    header {
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 22px;
+      color: #5a3d8a;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #5a3d8a;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #5a3d8a;
+      color: #fff;
+    }
+
+    /* Main Button */
+
+      .main-container {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 70px;
+    }
+
+    .open-btn {
+      padding: 14px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #764ba2;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000
+    }
+
+    /* Popup */
+    .popup {
+      background: #ffffff;
+      width: 380px;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+      animation: scaleIn 0.3s ease;
+      position: relative;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #764ba2;
+    }
+
+.popup label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+    .loan-amount {
+    display: none;
+  }
+
+    .popup input,.popup select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      /* font-size: 14px; */
+    }
+
+    .popup button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- <header>
+    <h1>🌾 Debt Safe Planner</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Login</a>
+      <a href="#">Sign Up</a>
+    </nav>
+  </header> -->
+
+  <div class="main-container">
+  <button class="open-btn" onclick="openPopup()">Input User Data</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="popup">
+      <span class="close" onclick="closePopup()">×</span>
+      <h2>Enter the required Details</h2>
+
+      <form id="farmerForm">
+
+        <label>Land Size</label>
+      <select name="landSize" id="landSize" required>
+        <option value="">Select land size</option>
+        <option>Less than 1 acre</option>
+        <option>1 – 2 acres</option>
+        <option>2 – 5 acres</option>
+        <option>More than 5 acres</option>
+      </select>
+
+      <!-- Budget -->
+      <label>Available Budget (₹)</label>
+      <input type="number" placeholder="Enter budget" id="budget"  required>
+
+      <!-- Previous Loan -->
+      <label>Previous Loan</label>
+      <select onchange="toggleLoanAmount(this.value)" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <!-- Loan Amount -->
+      <div class="loan-amount" id="loanAmount">
+        <label>Previous Loan Amount (₹)</label>
+        <input type="number" placeholder="Loan amount"  id="loanInput">
+      </div>
+
+      <!-- Soil Type -->
+      <label>Soil Type</label>
+      <select required>
+        <option value="">Select soil type</option>
+        <option>Black Soil</option>
+        <option>Red Soil</option>
+        <option>Alluvial Soil</option>
+        <option>Laterite Soil</option>
+        <option>Sandy Soil</option>
+      </select>
+
+      <!-- Seasonal Preference -->
+      <label>Seasonal Preference</label>
+      <select required>
+        <option value="">Select season</option>
+        <option>Kharif</option>
+        <option>Rabi</option>
+        <option>Zaid</option>
+        <option>All Seasons</option>
+      </select>
+
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("overlay").style.display = "none";
+    }
+    function toggleLoanAmount(value) {
+  document.getElementById("loanAmount").style.display =
+    value === "yes" ? "block" : "none";
+}
+
+  document.querySelector(".popup form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const inputs = document.querySelectorAll(".popup select, .popup input");
+
+
+  let land = document.getElementById("landSize").value;
+  let budget = document.getElementById("budget").value;
+  let loan = document.getElementById("loanInput").value ||0;
+
+  localStorage.setItem("landSize", land);
+  localStorage.setItem("budget", budget);
+  localStorage.setItem("loan", loan);
+
+  const dat = {
+    land_size: land,
+    budget: budget,
+    loan_amount: loan
+  };
+
+  // window.location.href = "dashboard.html"; 
+
+  const data = {
+    land_size: inputs[0].value,
+    budget: inputs[1].value,
+    previous_loan: inputs[2].value,
+    loan_amount: inputs[3] ? inputs[3].value : 0,
+    soil_type: inputs[4].value,
+    season: inputs[5].value
+  };
+
+  fetch("/save", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  // .then(data => {
+  //   // alert("Data saved successfully!");
+  //   alert("Debt Risk Level: " + data.debt_risk);
+  //   closePopup();
+  //   this.reset();
+  .then(data => {
+  sessionStorage.setItem("ai_result", JSON.stringify(data)); // ✅ IMPORTANT
+  window.location.href = "dashboard.html";
+})
+  .catch(err => console.error(err));
+});
+</script>
+
+
+</body>
+</html>

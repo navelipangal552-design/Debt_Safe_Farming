@@ -1,0 +1,96 @@
+Land Size,Budget,Previous Loan,Loan Amount,Soil Type,Season
+Less than 1 acre,9876,no,,Black Soil,Kharif
+Less than 1 acre,30000,No,0,Red Soil,Kharif
+1 – 2 acres,45000,Yes,15000,Black Soil,Rabi
+2 – 5 acres,80000,Yes,40000,Alluvial Soil,Kharif
+More than 5 acres,150000,No,0,Black Soil,All Seasons
+1 – 2 acres,60000,Yes,25000,Red Soil,Zaid
+Less than 1 acre,28000,No,0,Sandy Soil,Rabi
+2 – 5 acres,95000,Yes,50000,Alluvial Soil,Kharif
+More than 5 acres,200000,Yes,75000,Laterite Soil,All Seasons
+Less than 1 acre,25000,No,0,Sandy Soil,Kharif
+Less than 1 acre,32000,Yes,12000,Red Soil,Rabi
+1 – 2 acres,50000,No,0,Black Soil,Kharif
+1 – 2 acres,58000,Yes,20000,Alluvial Soil,Rabi
+1 – 2 acres,62000,Yes,30000,Red Soil,Zaid
+2 – 5 acres,70000,No,0,Laterite Soil,Kharif
+2 – 5 acres,85000,Yes,35000,Black Soil,Rabi
+2 – 5 acres,92000,Yes,45000,Alluvial Soil,Zaid
+2 – 5 acres,110000,Yes,60000,Black Soil,All Seasons
+More than 5 acres,130000,No,0,Red Soil,Kharif
+More than 5 acres,160000,Yes,70000,Alluvial Soil,Rabi
+More than 5 acres,180000,Yes,90000,Black Soil,Zaid
+More than 5 acres,220000,Yes,120000,Laterite Soil,All Seasons
+Less than 1 acre,27000,No,0,Red Soil,Zaid
+1 – 2 acres,54000,Yes,18000,Sandy Soil,Kharif
+2 – 5 acres,78000,No,0,Red Soil,Rabi
+2 – 5 acres,100000,Yes,52000,Alluvial Soil,Kharif
+More than 5 acres,250000,Yes,140000,Black Soil,All Seasons
+More than 5 acres,1200,yes,3000,Red Soil,Rabi
+Less than 1 acre,1000,yes,900,Black Soil,Rabi
+1 – 2 acres,1200,yes,1000,Red Soil,Rabi
+2 – 5 acres,1000,yes,2000,Black Soil,Rabi
+1 – 2 acres,1000,no,,Red Soil,Kharif
+More than 5 acres,20000,yes,10000,Red Soil,Zaid
+More than 5 acres,10000,yes,20000,Red Soil,Zaid
+More than 5 acres,1000,yes,20000,Red Soil,Rabi
+1 – 2 acres,1000,no,,Black Soil,Rabi
+More than 5 acres,10000,no,,Black Soil,Kharif
+More than 5 acres,5000,yes,1000,Black Soil,Zaid
+More than 5 acres,1000,no,,Laterite Soil,Rabi
+More than 5 acres,1000,no,,Black Soil,Kharif
+More than 5 acres,1900,no,,Red Soil,Rabi
+More than 5 acres,20000,yes,1000,Laterite Soil,Rabi
+More than 5 acres,20000,yes,1000,Laterite Soil,Rabi
+More than 5 acres,10000,no,,Sandy Soil,Kharif
+Less than 1 acre,1000,yes,10000,Sandy Soil,Kharif
+2 – 5 acres,10000,yes,1000,Black Soil,Zaid
+More than 5 acres,10000,yes,1000,Alluvial Soil,Rabi
+More than 5 acres,1000,yes,123,Black Soil,Rabi
+2 – 5 acres,10000,yes,2000,Red Soil,Zaid
+More than 5 acres,650000,yes,10000,Red Soil,Kharif
+More than 5 acres,650000,yes,10000,Red Soil,Kharif
+1 – 2 acres,12,no,,Black Soil,Rabi
+2 – 5 acres,10000,yes,1000,Red Soil,Zaid
+More than 5 acres,20000,yes,1000,Black Soil,Rabi
+2 – 5 acres,10000,yes,2000,Black Soil,Zaid
+2 – 5 acres,10000,yes,2000,Black Soil,Zaid
+2 – 5 acres,10000,yes,2000,Black Soil,Zaid
+2 – 5 acres,10000,yes,2000,Black Soil,Zaid
+More than 5 acres,2000,yes,1000,Black Soil,Zaid
+More than 5 acres,12000,yes,1000,Black Soil,Kharif
+More than 5 acres,12000,yes,10000,Alluvial Soil,Rabi
+More than 5 acres,12000,yes,1000,Black Soil,All Seasons
+More than 5 acres,350000,yes,10000,Alluvial Soil,All Seasons
+2 – 5 acres,12346,no,,Black Soil,Zaid
+2 – 5 acres,350000,no,,Black Soil,Zaid
+More than 5 acres,350000,no,,Black Soil,Zaid
+2 – 5 acres,350000,yes,120000,Black Soil,Zaid
+2 – 5 acres,350000,no,120000,Black Soil,Zaid
+2 – 5 acres,350000,yes,120000,Black Soil,Zaid
+2 – 5 acres,12000,no,,Black Soil,Rabi
+2 – 5 acres,12000,yes,1900,Black Soil,Rabi
+2 – 5 acres,12000,yes,10000,Black Soil,Rabi
+More than 5 acres,12000,yes,1000,Black Soil,All Seasons
+More than 5 acres,12000,no,1000,Black Soil,All Seasons
+More than 5 acres,35000,no,1000,Black Soil,All Seasons
+1 – 2 acres,35000,no,1000,Black Soil,All Seasons
+More than 5 acres,35000,no,1000,Black Soil,All Seasons
+More than 5 acres,29000,yes,10000,Laterite Soil,Rabi
+More than 5 acres,29000,yes,10000,Laterite Soil,Rabi
+More than 5 acres,29000,no,10000,Laterite Soil,Rabi
+More than 5 acres,29000,no,10000,Laterite Soil,Rabi
+1 – 2 acres,20000,no,,Black Soil,Kharif
+More than 5 acres,650000,yes,10000,Sandy Soil,Rabi
+2 – 5 acres,350000,yes,12000,Black Soil,Kharif
+2 – 5 acres,350000,yes,12000,Black Soil,Kharif
+2 – 5 acres,350000,yes,12000,Black Soil,Kharif
+2 – 5 acres,350000,yes,12000,Black Soil,Kharif
+2 – 5 acres,100000,no,,Alluvial Soil,All Seasons
+More than 5 acres,10000,no,,Red Soil,All Seasons
+More than 5 acres,10000,no,,Red Soil,All Seasons
+More than 5 acres,10000,no,,Red Soil,All Seasons
+More than 5 acres,120000,no,,Alluvial Soil,Zaid
+2 – 5 acres,250000,no,,Laterite Soil,Kharif
+2 – 5 acres,250000,no,,Red Soil,Rabi
+More than 5 acres,120000,no,,Red Soil,Kharif

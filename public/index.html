@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Krushi Mitra</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Segoe UI",sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449");
+  background-size:cover;
+  background-position:center;
+  min-height:100vh;
+  color:#fff;
+}
+
+/* ================= HEADER ================= */
+header{
+  background:
+    linear-gradient(rgba(34,139,34,0.9),rgba(34,139,34,0.9)),
+    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+  background-size:cover;
+  background-position:center;
+  padding:24px 40px 20px;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo span{font-size:42px;}
+
+.logo h1{
+  font-size:32px;
+  font-weight:800;
+}
+
+.tagline{
+  font-size:16px;
+  opacity:0.95;
+}
+
+.lang-buttons button{
+  padding:7px 16px;
+  border:1px solid #fff;
+  background:transparent;
+  color:#fff;
+  border-radius:22px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.lang-buttons button:hover{
+  background:#fff;
+  color:#1f7a1f;
+}
+
+.info-strip{
+  margin-top:12px;
+  text-align:center;
+  font-size:17px;
+  font-weight:600;
+}
+
+/* ================= MAIN SECTION ================= */
+.main-section{
+  margin-top:160px;
+  padding:40px 60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+/* ================= FARMER CARD (LEFT) ================= */
+.farmer-card{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  padding:42px;
+  border-radius:26px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+
+.farmer-card h2{
+  font-size:30px;
+  margin-bottom:14px;
+}
+
+.farmer-card p{
+  font-size:17px;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+.farmer-card ul{
+  list-style:none;
+  margin-bottom:26px;
+}
+
+.farmer-card li{
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.open-btn {
+      padding: 14px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #764ba2;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+/* ================= AI CARD (RIGHT) ================= */
+.ai-card{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  padding:40px;
+  border-radius:26px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+
+.ai-card img{
+  width:180px;
+}
+
+.ai-content h2{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.ai-content p{
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.ai-btn{
+  padding:16px 40px;
+  border:none;
+  border-radius:42px;
+  background:linear-gradient(135deg,#fde047,#f59e0b);
+  color:#000;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.45);
+}
+
+/* ================= POPUP ================= */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+.popup{
+  background:#fff;
+  width:460px;
+  padding:32px;
+  border-radius:18px;
+  color:#000;
+  position:relative;
+}
+
+.popup h3{
+  text-align:center;
+  color:#2f855a;
+  margin-bottom:20px;
+}
+
+.popup label{
+  font-weight:700;
+  font-size:15px;
+  display:block;
+  margin-top:12px;
+}
+
+.popup input,.popup select{
+  width:100%;
+  padding:11px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.popup button{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  border:none;
+  border-radius:32px;
+  background:linear-gradient(135deg,#38a169,#2f855a);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  font-size:22px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <span>👨‍🌾🌾</span>
+      <div>
+        <h1 id="siteName">Krushi Mitra</h1>
+        <div class="tagline" id="tagline">
+          Farmer Financial Support Platform
+        </div>
+      </div>
+    </div>
+
+    <div class="lang-buttons">
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('hi')">हिंदी</button>
+      <button onclick="setLang('mr')">मराठी</button>
+    </div>
+  </div>
+
+  <div class="info-strip" id="infoStrip">
+    🚜 Trusted AI guidance for farmers • Simple • Secure • Free
+  </div>
+</header>
+
+<section class="main-section">
+
+  <!-- FARMER LEFT (NO IMAGE) -->
+  <div class="farmer-card">
+    <h2 id="title">Your Farming Financial Partner</h2>
+    <p id="desc">
+      Krushi Mitra helps farmers understand debt risk and
+      take safe financial decisions.
+    </p>
+
+    <ul id="features">
+      <li>✅ Easy debt risk analysis</li>
+      <li>🌱 Crop & season guidance</li>
+      <li>💰 Budget-based planning</li>
+      <li>📊 Clear results</li>
+    </ul>
+
+    <button class="open-btn" id="mainBtn" onclick="openPopup()">
+      Enter Farmer Details
+    </button>
+  </div>
+
+  <!-- AI RIGHT (CARTOON FARMER IMAGE) -->
+  <div class="ai-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="AI Farmer">
+
+    <div class="ai-content">
+      <h2 id="aiTitle">Meet Your AI Assistant – Krushi Mitra 🤖🌾</h2>
+      <p id="aiDesc">
+        Get instant AI-based guidance on farming finance,
+        loans, debt safety and planning – anytime, anywhere.
+      </p>
+
+      <button class="ai-btn" id="aiBtn" onclick="openAI()">
+        💬 Talk to Krushi Mitra
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<div class="overlay" id="overlay">
+    <div class="popup">
+      <span class="close" onclick="closePopup()">×</span>
+      <h2>Enter the required Details</h2>
+
+      <form id="farmerForm">
+
+        <label>Land Size</label>
+      <select name="landSize" id="landSize" required>
+        <option value="">Select land size</option>
+        <option>Less than 1 acre</option>
+        <option>1 – 2 acres</option>
+        <option>2 – 5 acres</option>
+        <option>More than 5 acres</option>
+      </select>
+
+      <!-- Budget -->
+      <label>Available Budget (₹)</label>
+      <input type="number" placeholder="Enter budget" id="budget"  required>
+
+      <!-- Previous Loan -->
+      <label>Previous Loan</label>
+      <select onchange="toggleLoanAmount(this.value)" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <!-- Loan Amount -->
+      <div class="loan-amount" id="loanAmount">
+        <label>Previous Loan Amount (₹)</label>
+        <input type="number" placeholder="Loan amount"  id="loanInput">
+      </div>
+
+      <!-- Soil Type -->
+      <label>Soil Type</label>
+      <select required>
+        <option value="">Select soil type</option>
+        <option>Black Soil</option>
+        <option>Red Soil</option>
+        <option>Alluvial Soil</option>
+        <option>Laterite Soil</option>
+        <option>Sandy Soil</option>
+      </select>
+
+      <!-- Seasonal Preference -->
+      <label>Seasonal Preference</label>
+      <select required>
+        <option value="">Select season</option>
+        <option>Kharif</option>
+        <option>Rabi</option>
+        <option>Zaid</option>
+        <option>All Seasons</option>
+      </select>
+
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+
+function openPopup() {
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("overlay").style.display = "none";
+    }
+    function toggleLoanAmount(value) {
+  document.getElementById("loanAmount").style.display =
+    value === "yes" ? "block" : "none";
+}
+ document.querySelector(".popup form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const inputs = document.querySelectorAll(".popup select, .popup input");
+
+
+  let land = document.getElementById("landSize").value;
+  let budget = document.getElementById("budget").value;
+  let loan = document.getElementById("loanInput").value ||0;
+
+  localStorage.setItem("landSize", land);
+  localStorage.setItem("budget", budget);
+  localStorage.setItem("loan", loan);
+
+  const dat = {
+    land_size: land,
+    budget: budget,
+    loan_amount: loan
+  };
+  
+  const data = {
+    land_size: inputs[0].value,
+    budget: inputs[1].value,
+    previous_loan: inputs[2].value,
+    loan_amount: inputs[3] ? inputs[3].value : 0,
+    soil_type: inputs[4].value,
+    season: inputs[5].value
+  };
+
+  fetch("/save", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  // .then(data => {
+  //   // alert("Data saved successfully!");
+  //   alert("Debt Risk Level: " + data.debt_risk);
+  //   closePopup();
+  //   this.reset();
+  .then(data => {
+  sessionStorage.setItem("ai_result", JSON.stringify(data)); // ✅ IMPORTANT
+  window.location.href = "dashboard.html";
+})
+  .catch(err => console.error(err));
+});
+
+function openAI(){alert("Krushi Mitra AI will assist you soon 🤖🌾");}
+
+function setLang(l){
+ if(l==="hi"){
+  siteName.innerText="कृषि मित्र";
+  tagline.innerText="किसानों के लिए वित्तीय सहायता मंच";
+  infoStrip.innerText="🚜 किसानों के लिए भरोसेमंद एआई मार्गदर्शन";
+  title.innerText="आपका कृषि वित्त साथी";
+  desc.innerText="कृषि मित्र किसानों को ऋण जोखिम समझने और सुरक्षित निर्णय लेने में मदद करता है।";
+  features.innerHTML="<li>✅ आसान ऋण जांच</li><li>🌱 फसल मार्गदर्शन</li><li>💰 बजट योजना</li><li>📊 सरल परिणाम</li>";
+  mainBtn.innerText="किसान जानकारी भरें";
+  formTitle.innerText="किसान जानकारी फॉर्म";
+  l1.innerText="भूमि का आकार";
+  l2.innerText="उपलब्ध बजट (₹)";
+  l3.innerText="पिछला ऋण";
+  submitBtn.innerText="जानकारी जमा करें";
+  aiBtn.innerText="💬 कृषि मित्र से बात करें";
+  aiTitle.innerText="आपका एआई सहायक – कृषि मित्र 🤖🌾";
+  aiDesc.innerText="खेती, कर्ज और वित्तीय योजना से जुड़े सवालों के तुरंत उत्तर प्राप्त करें।";
+ }
+ else if(l==="mr"){
+  siteName.innerText="कृषी मित्र";
+  tagline.innerText="शेतकऱ्यांसाठी आर्थिक सहाय्य मंच";
+  infoStrip.innerText="🚜 शेतकऱ्यांसाठी विश्वासार्ह एआय मार्गदर्शन";
+  title.innerText="आपला शेती वित्त साथी";
+  desc.innerText="कृषी मित्र शेतकऱ्यांना कर्जाचा धोका समजून सुरक्षित निर्णय घेण्यास मदत करतो.";
+  features.innerHTML="<li>✅ सोपी कर्ज तपासणी</li><li>🌱 पीक मार्गदर्शन</li><li>💰 बजेट नियोजन</li><li>📊 स्पष्ट निकाल</li>";
+  mainBtn.innerText="शेतकरी माहिती भरा";
+  formTitle.innerText="शेतकरी माहिती फॉर्म";
+  l1.innerText="जमिनीचा आकार";
+  l2.innerText="उपलब्ध बजेट (₹)";
+  l3.innerText="मागील कर्ज";
+  submitBtn.innerText="माहिती सबमिट करा";
+  aiBtn.innerText="💬 कृषी मित्राशी बोला";
+  aiTitle.innerText="आपला एआय सहाय्यक – कृषी मित्र 🤖🌾";
+  aiDesc.innerText="शेती, कर्ज व आर्थिक नियोजनाबाबत त्वरित मार्गदर्शन मिळवा.";
+ }
+ else{
+  location.reload();
+ }
+}
+</script>
+
+</body>
+</html>
